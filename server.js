@@ -1,33 +1,15 @@
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-// import { StringOutputParser } from "@langchain/core/output_parsers";
 import { Document } from "@langchain/core/documents";
-
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
-import { createRetrievalChain } from "langchain/chains/retrieval";
-
 
 
 const chatModel = new ChatOllama({
-  baseUrl: "http://localhost:11434", // Default value
+  baseUrl: "http://localhost:11434",
   model: "llama3"
 });
 
-// const prompt = ChatPromptTemplate.fromMessages([
-//   ["system", "kamu sangat mahir berbahasa indonesia, semua response akan dijawab dengan bahasa indonesia yang baik."],
-//   ["user", "{input}"],
-// ]);
-
-// const outputParser = new StringOutputParser();
-
-// const llmChain = prompt.pipe(chatModel).pipe(outputParser);
-
-// const response = await llmChain.invoke({
-//   input: "berapa luas negara indonesia?",
-// });
-
-
-const prompt = ChatPromptTemplate.fromTemplate(`Tidak menjawab diluar dari context yang diberikan.
+const prompt = ChatPromptTemplate.fromTemplate(`Kamu sangat fasih berbahasa indonesia dengan sangat baik.Tidak menjawab diluar dari context yang diberikan.
 <context>
 {context}
 </context>
@@ -40,51 +22,30 @@ const documentChain = await createStuffDocumentsChain({
 });
 
 const response = await documentChain.invoke({
-  input: "berapa 1 + 1?",
+  input: "siapa karyawan gacor di Telkomsel?",
   context: [
     new Document({
       pageContent:
-        "Tflyers adalah adalah sebutan untuk setiap insan yang menjalankan tugas di perusahaan yang bernama Telkomsel, Salam ketika ingin memulai aktivitas diawali dengan sapaan Semangat Pagi, kemudian Tflyers yang lain akan menjawab Pagi, Pagi, Pagi"
+        `Telkomsel adalah perusahaan telekomunikasi yang berdiri pada tahun 1995. 
+        Perusahaan ini merupakan anak perusahaan dari Telkom Indonesia. 
+        Telkomsel memiliki layanan telekomunikasi seluler yang beroperasi di Indonesia. 
+        Sampai dengan tahun 2024 Telkomsel memiliki 7 direktorat yang dipimpin oleh Nugroho (Nugi) sebagai direktur utama, mengantikan Direktur utama sebelumnya Hendri Mulya Syam Pada Mei 2024.
+        berikut adalah direktorat yang ada di Telkomsel:
+        1. Direktorat Network dipimpin oleh Indra Mardiatna
+        2. Direktorat Sales dipimpin oleh Adiwinahyu Basuki Sigit
+        3. Direktorat Marketing dipimpin oleh Derrick Heng
+        4. Direktorat Planning and Transformation dipimpin oleh Wong Soon Nam
+        5. Direktorat Finance and Strategy dipimpin oleh Daru Mulyawan
+        6. Direktorat IT dipimpin oleh Joyce Shia
+        7. Direktorat Human Capital Management dipimpin oleh Indrawan Dita Pradana
+
+        Tflyer adalah sebutan untuk karyawan yang bekerja di Telkomsel. Setiap pertemuan yang diadakan oleh Telkomsel, biasanya diawali dengan sapaan Semangat Pagi dan dijawab dengan PAGI PAGI PAGI!!!".
+        Telkomsel juga memiliki pekerja yang gacor pada salah satu subdir di IT, dia bernama Desto
+        `
     }),
   ],
 });
 
 
 console.log("response = ", response)
-
-// const callLocalAPI = async() => {
-//     const axios = require('axios');
-//     const response = await axios.post('http://localhost:11434/api/chat', {
-//         model: "llama3",
-//         messages: [
-//             { role: "user", content: "semangat pagi!!!" }
-//         ],
-//         temperature: 0.7,
-//         max_tokens: -1,
-//         stream: false
-//     }, {
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         responseType: 'stream'
-//     });
-
-//     response.data.on('data', (chunk) => {
-//         if (!chunk) return;
-//         const chunkStr = chunk.toString().trim();
-//         const data = JSON.parse(chunkStr);
-//         process.stdout.write(data.message.content);
-        
-//     });
-
-//     response.data.on('end', () => {
-//         console.log('\nResponse stream ended.');
-//     });
-// }
-
-// async function run() {
-//     await callLocalAPI();
-// }
-
-// run().catch(console.error);
 

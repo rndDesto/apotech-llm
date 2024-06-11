@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "sharing session llm localy",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:native":"node native.js",
+    "start:server": "node server.js",
+    "start:chat": "node chat.js"
   },
   "dependencies": {
     "@langchain/anthropic": "^0.2.0",
