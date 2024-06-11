@@ -5,15 +5,17 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start:native":"node native.js",
+    "start:native": "node native.js",
     "start:server": "node server.js",
-    "start:chat": "node chat.js"
+    "start:chat": "node chat.js",
+    "start:retrival": "node retrival.js"
   },
   "dependencies": {
     "@langchain/anthropic": "^0.2.0",
     "@langchain/community": "^0.2.5",
     "@langchain/core": "^0.2.6",
     "@langchain/openai": "^0.1.1",
+    "ai": "^3.1.31",
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "langchain": "^0.2.4",

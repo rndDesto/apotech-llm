@@ -19,7 +19,7 @@ const outputParser = new StringOutputParser();
 const llmChain = prompt.pipe(chatModel).pipe(outputParser);
 
 const response = await llmChain.invoke({
-  input: "berapa luas negara indonesia?",
+  input: "apa itu LLM?",
 });
 
 console.log("response = ", response)

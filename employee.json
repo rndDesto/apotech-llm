@@ -1,0 +1,22 @@
+[{
+    "nama": "Bejo",
+    "divisi": "IT",
+    "role": "frontend",
+    "gaji": "Rp 45.000.000",
+    "status": "tkp"
+},
+{
+    "nama": "Badu",
+    "divisi": "IT",
+    "role": "backend",
+    "gaji": "Rp 60.000.000",
+    "status": "permanent"
+},
+{
+    "nama": "Ani",
+    "divisi": "Sales",
+    "role": "account executive",
+    "gaji": "Rp 250.000.000",
+    "status": "tkp"
+}
+]
