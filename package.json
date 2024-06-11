@@ -6,6 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "@langchain/anthropic": "^0.2.0",
+    "@langchain/community": "^0.2.5",
+    "@langchain/core": "^0.2.6",
+    "@langchain/openai": "^0.1.1",
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "langchain": "^0.2.4",
+    "ollama": "^0.5.1",
+    "openai": "^4.47.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
