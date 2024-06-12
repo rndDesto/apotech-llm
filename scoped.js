@@ -22,15 +22,14 @@ const documentChain = await createStuffDocumentsChain({
 });
 
 const response = await documentChain.invoke({
-  input: "siapa karyawan gacor di Telkomsel?",
+  input: "siapa karyawan yang gacor di Telkomsel?",
   context: [
     new Document({
       pageContent:
-        `Telkomsel adalah perusahaan telekomunikasi yang berdiri pada tahun 1995. 
-        Perusahaan ini merupakan anak perusahaan dari Telkom Indonesia. 
-        Telkomsel memiliki layanan telekomunikasi seluler yang beroperasi di Indonesia. 
+        `Telkomsel memiliki layanan telekomunikasi seluler yang beroperasi di Indonesia. 
         Sampai dengan tahun 2024 Telkomsel memiliki 7 direktorat yang dipimpin oleh Nugroho (Nugi) sebagai direktur utama, mengantikan Direktur utama sebelumnya Hendri Mulya Syam Pada Mei 2024.
         berikut adalah direktorat yang ada di Telkomsel:
+        
         1. Direktorat Network dipimpin oleh Indra Mardiatna
         2. Direktorat Sales dipimpin oleh Adiwinahyu Basuki Sigit
         3. Direktorat Marketing dipimpin oleh Derrick Heng

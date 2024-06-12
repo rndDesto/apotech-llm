@@ -1,10 +1,7 @@
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
-import { ChatPromptTemplate, PromptTemplate } from "@langchain/core/prompts";
+import { PromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
-import { ChatMessageHistory } from "langchain/memory";
-import { StreamingTextResponse, createStreamDataTransformer } from "ai";
 import { JSONLoader } from "langchain/document_loaders/fs/json";
-import { CharacterTextSplitter } from "langchain/text_splitter";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { formatDocumentsAsString } from "langchain/util/document";
 
@@ -22,7 +19,8 @@ const loader = new JSONLoader('./employee.json',
   "/divisi",
   "/role",
   "/gaji",
-  "/status"
+  "/status",
+  "/hobby"
 ]
 ); 
 const docs = await loader.load();
@@ -34,7 +32,7 @@ const prompt = PromptTemplate.fromTemplate(TEMPLATE);
 const chatModel = new ChatOllama({
   baseUrl: "http://localhost:11434",
   model: "llama3",
-  temperature: 0,
+  temperature: 0
 });
 
 const parser = new StringOutputParser();
@@ -49,7 +47,7 @@ const chain = RunnableSequence.from([
 ]);
 
 const response = await chain.invoke({
-    question: "jelaskan informasi dengan employee dengan nama Ani",
+    question: "siapa karyawan yang memiliki hobi dengan aktifitas air",
   });
 
 console.log("response = ", response)

@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "sharing session llm localy",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start:native": "node native.js",
-    "start:server": "node server.js",
+    "start:scoped": "node scoped.js",
     "start:chat": "node chat.js",
     "start:retrival": "node retrival.js"
   },
